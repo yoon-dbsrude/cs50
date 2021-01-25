@@ -13,30 +13,21 @@ void display(int, int);
 int main()
 {
     int queue_end=0, queue_first=0;
-    QUEUE[0]='\0';  // Ã¹Ä­¿¡ null
+    QUEUE[0]='\0';  // ì²«ì¹¸ì— null
 
     while(1)
     {
-        int i=select();       // 1~4 ¼±ÅÃ Ãâ·Â
+        int i=select();       // 1~4 ì„ íƒ ì¶œë ¥
 
         switch(i)
         {
-            case 1 :    queue_end=insert(queue_first, queue_end);   // =rear °ª
-                        //printf("front=%d, rear=%d\n", queue_first, queue_end);
-                        //display(queue_first, queue_end);        // Áö¿ï °Í
-                        //printf("insert ÀÌÈÄ front=%d, rear=%d\n", queue_first, queue_end);
+            case 1 :    queue_end=insert(queue_first, queue_end);  
                         break;
 
             case 2 :    queue_first=del(queue_first, queue_end);
-                        //printf("front=%d, rear=%d\n", queue_first, queue_end);
-                        //display(queue_first, queue_end);
-                        //printf("del ÀÌÈÄ front=%d, rear=%d\n", queue_first, queue_end);
                         break;
 
-            case 3 :    //printf("front=%d, rear=%d\n", queue_first, queue_end);
-                        display(queue_first, queue_end);
-
-
+            case 3 :    display(queue_first, queue_end);
                         break;
 
             case 4 : return 0;
@@ -45,30 +36,30 @@ int main()
 }
 
 
-int select(void)        // 1~4 ¼±ÅÃ Ãâ·Â
+int select(void)        // 1~4 ì„ íƒ ì¶œë ¥
 {
     int n;
-    puts("1. »ğÀÔ");
-    puts("2. »èÁ¦");
-    puts("3. Á¶È¸");
-    puts("4. Á¾·á");
-    printf("ÀÔ·Â : ");
+    puts("1. ì‚½ì…");
+    puts("2. ì‚­ì œ");
+    puts("3. ì¡°íšŒ");
+    puts("4. ì¢…ë£Œ");
+    printf("ì…ë ¥ : ");
     scanf("%d", &n);
 
     return n;
 }
 
 
-int insert(int front, int rear)    // 1. »ğÀÔ : rear +1
+int insert(int front, int rear)    // 1. ì‚½ì… : rear +1
 {
-    if((rear-front)==10)    puts("Å¥°¡ ²Ë Ã¡½À´Ï´Ù.");
+    if((rear-front)==10)    puts("íê°€ ê½‰ ì°¼ìŠµë‹ˆë‹¤.");
     else
     {
         int num;
-        printf("»ğÀÔÇÒ °ª : ");
-        scanf("%d", &num);// ²Ë Ã¡À½
+        printf("ì‚½ì…í•  ê°’ : ");
+        scanf("%d", &num);// ê½‰ ì°¼ìŒ
 
-        QUEUE[rear++]=num;   // rear ÀÚ¸®¿¡ ¼ıÀÚ »ğÀÔ ÈÄ ¹Ù·Î µŞÀÚ¸®¿¡ null
+        QUEUE[rear++]=num;   // rear ìë¦¬ì— ìˆ«ì ì‚½ì… í›„ ë°”ë¡œ ë’·ìë¦¬ì— null
         QUEUE[rear]='\0';
     }
     return rear;
@@ -76,23 +67,23 @@ int insert(int front, int rear)    // 1. »ğÀÔ : rear +1
 
 
 
-int del(int front, int rear)     // 2. »èÁ¦
+int del(int front, int rear)     // 2. ì‚­ì œ
 {
-    if(front==rear)    puts("Å¥°¡ ºñ¾ú½À´Ï´Ù.");
+    if(front==rear)    puts("íê°€ ë¹„ì—ˆìŠµë‹ˆë‹¤.");
     else
     {
-        printf("Å¥¿¡¼­ »èÁ¦µÊ : %d\n", QUEUE[front]);
-        QUEUE[front++]='\0';    // front ÀÚ¸® null·Î ¹Ù²Ş & front´Â +1
+        printf("íì—ì„œ ì‚­ì œë¨ : %d\n", QUEUE[front]);
+        QUEUE[front++]='\0';    // front ìë¦¬ nullë¡œ ë°”ê¿ˆ & frontëŠ” +1
     }
     return front;
 }
 
 
 
-void display(int front, int rear)      // 3. Á¶È¸
+void display(int front, int rear)      // 3. ì¡°íšŒ
 {
     int i=0;
-    printf("Å¥ : ");
+    printf("í : ");
     for(i=front; i<rear; i++)
         printf("%d ", QUEUE[i]);
     printf("\n");
