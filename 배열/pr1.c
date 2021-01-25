@@ -21,12 +21,12 @@ int main()
     while(1)
     {
         int student_score = input_score();          // 학점 입력
-        if(student_score==-1)
+        if(student_score==999)
         {
             puts("학점 프로그램을 종료합니다.");   
             return 0;
         }
-        if(student_score==999)  continue;
+        if(student_score==-1)  continue;
 
         print_grade(student_score);              // 학점 출력
     }
@@ -58,14 +58,14 @@ int input_score()           // 학생 성적 입력
     printf("성적을 입력하세요 (0 ~ 100) : ");
     scanf("%d", &score);
 
-    if(score==-1)   return -1;
+    if(score==999)   return 999;
 
     if(score>=0 && score<=100)
         return score;
     else
     {
         printf("**성적을 올바르게 입력하세요. 범위는 0 ~ 100 입니다.\n");      //유효성 체크
-        return 999;
+        return -1;
     }
 } 
 
