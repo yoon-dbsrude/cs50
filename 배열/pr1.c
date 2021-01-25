@@ -15,30 +15,30 @@ void print_grade(int);
 
 int main()
 {
-    print_scoretable();     // ÇĞÁ¡ Å×ÀÌºí Ãâ·Â
+    print_scoretable();     // í•™ì  í…Œì´ë¸” ì¶œë ¥
 
     
     while(1)
     {
-        int student_score = input_score();          // ÇĞÁ¡ ÀÔ·Â
+        int student_score = input_score();          // í•™ì  ì…ë ¥
         if(student_score==-1)   return 0;
 
-        print_grade(student_score);              // ÇĞÁ¡ Ãâ·Â
+        print_grade(student_score);              // í•™ì  ì¶œë ¥
     }
 }
 
 
-void print_scoretable()         // ÇĞÁ¡ Å×ÀÌºí Ãâ·Â
+void print_scoretable()         // í•™ì  í…Œì´ë¸” ì¶œë ¥
 {
     int i;
-    puts("ÇĞÁ¡ ÇÁ·Î±×·¥");
-    puts("Á¾·á¸¦ ¿øÇÏ¸é \"-1\"À» ÀÔ·Â\n");
-    puts("[ÇĞÁ¡  Å×ÀÌºí]");
-    printf("Á¡¼ö : ");
+    puts("í•™ì  í”„ë¡œê·¸ë¨");
+    puts("ì¢…ë£Œë¥¼ ì›í•˜ë©´ \"-1\"ì„ ì…ë ¥\n");
+    puts("[í•™ì   í…Œì´ë¸”]");
+    printf("ì ìˆ˜ : ");
     for(i=0; i<9; i++)
         printf("%-6d", SCORE_GRADE[i]);
 
-    printf("\nÇĞÁ¡ : ");
+    printf("\ní•™ì  : ");
     for(i=0; i<9; i++)
         printf("%-6s", CHAR_GRADE[i]);
 
@@ -46,24 +46,24 @@ void print_scoretable()         // ÇĞÁ¡ Å×ÀÌºí Ãâ·Â
 }
 
 
-int input_score()           // ÇĞ»ı ¼ºÀû ÀÔ·Â
+int input_score()           // í•™ìƒ ì„±ì  ì…ë ¥
 {
     int score;
-    printf("¼ºÀûÀ» ÀÔ·ÂÇÏ¼¼¿ä (0 ~ 100) : ");
+    printf("ì„±ì ì„ ì…ë ¥í•˜ì„¸ìš” (0 ~ 100) : ");
     scanf("%d", &score);
 
     if(score>=0 && score<=100)
         return score;
     else
     {
-        printf("¼ºÀûÀ» ¿Ã¹Ù¸£°Ô ÀÔ·ÂÇÏ¼¼¿ä!");
+        printf("ì„±ì ì„ ì˜¬ë°”ë¥´ê²Œ ì…ë ¥í•˜ì„¸ìš”!");      // ìœ íš¨ì„± ì²´í¬
         return -1;
         
     }
 } 
 
 
-void print_grade(int student_score)      // ÇĞÁ¡ Ãâ·Â
+void print_grade(int student_score)      // í•™ì  ì¶œë ¥
 {
     char grade[3];
     int i;
@@ -72,15 +72,15 @@ void print_grade(int student_score)      // ÇĞÁ¡ Ãâ·Â
     {       
         if(student_score==100)  student_score=95;
         else if(student_score<60)   student_score=0;
-        else if (student_score%5!=0)    student_score=rescore(student_score);     // %5 ³ª¸ÓÁö ÀÖ´Â °æ¿ì Á¡¼ö Á¶Á¤
+        else if (student_score%5!=0)    student_score=rescore(student_score);     // %5 ë‚˜ë¨¸ì§€ ìˆëŠ” ê²½ìš° ì ìˆ˜ ì¡°ì •
         if(student_score!=SCORE_GRADE[i])   continue;
         strcpy(grade, CHAR_GRADE[i]);
     }
-    printf("ÇĞÁ¡Àº %s ÀÔ´Ï´Ù.\n", grade);
+    printf("í•™ì ì€ %s ì…ë‹ˆë‹¤.\n", grade);
 }
 
 
-int rescore(int num)        // Á¡¼ö Á¶Á¤ ÇÔ¼ö 
+int rescore(int num)        // ì ìˆ˜ ì¡°ì • í•¨ìˆ˜ 
 {
     int re_num;
     
