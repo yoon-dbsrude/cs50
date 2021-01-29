@@ -9,7 +9,6 @@ const char CHAR_GRADE[N][3]={"A+","A","B+","B","C+","C","D+","D","F"};
 
 void print_scoretable();
 int input_score();
-int rescore(int);
 void print_grade(int);
 
 
@@ -75,22 +74,11 @@ void print_grade(int student_score)      // 학점 출력
     char grade[3];
     int i;
 
-    for(i=0; i<N; i++)
-    {       
-        if(student_score==100)  student_score=95;
-        else if(student_score<60)   student_score=0;
-        else if (student_score%5!=0)    student_score=rescore(student_score);     // %5 나머지 있는 경우 점수 조정
-        if(student_score!=SCORE_GRADE[i])   continue;
-        strcpy(grade, CHAR_GRADE[i]);
-    }
+    for(i=0; i<N; i++)   
+        if(student_score>=SCORE_GRADE[i])
+        {
+            strcpy(grade, CHAR_GRADE[i]);
+            break;
+        }
     printf("학점은 %s 입니다.\n", grade);
-}
-
-
-int rescore(int num)        // 점수 조정 함수 
-{
-    int re_num;
-    
-    if(num%5!=0)    re_num=num-(num%5);
-    return re_num;
 }
