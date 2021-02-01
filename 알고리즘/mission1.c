@@ -1,4 +1,4 @@
-#include <stdio.h>  // �����ؼ� ���ϱ�
+#include <stdio.h>  // 정렬해서 비교하기
 
 
 void num_sort(int arr[]);
@@ -9,10 +9,10 @@ int main(void)
     int b[5]={5,4,3,1,1};
     int i;
 
-    num_sort(a);
-    num_sort(b);
+    num_sort(a);   // a배열 정렬하기
+    num_sort(b);   // b배열 정렬하기
 
-    for(i=0; i<5; i++)
+    for(i=0; i<5; i++)   // 정렬된 a, b 배열 비교하기
     {
         if(a[i]==b[i])  continue;
         printf("False");
